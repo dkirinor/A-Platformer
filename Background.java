@@ -1,28 +1,28 @@
 import java.awt.Graphics;
-import java.awt.Color;
 
-public class Background {
-    int w;
-    int h;
-    double det;
-	Color background;
+import java.io.File;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
-    public Background(int _w, int _h, double _det) {
-		w = _w;
-        h = _h;
-        det = _det;
-    }
+public class Background { 
+	private int x;
+	private int y;
+	private BufferedImage backgroundImg;
 
-    public void draw(Graphics g, int red1, int green1, int blue1, int red2, int green2, int blue2) {
-        for (int i = 0; i < h / det; i++) {
-            double ratio = (double)i / (double)(h / det);
-            int red = (int)(red1 * (1 - ratio) + red2 * ratio);
-            int green = (int)(green1 * (1 - ratio) + green2 * ratio);
-            int blue = (int)(blue1 * (1 - ratio) + blue2 * ratio);
+	public Background(int x, int y) {
+		this.x = x;
+		this.y = y;
+		
+		try {
+			backgroundImg = ImageIO.read(new File("Background.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
-            background = new Color(red, green, blue);
-            g.setColor(background);
-            g.fillRect(0, (int)(i * det), w, (int)det+10);
-        }
-    }
+	public void draw(Graphics g) {
+		g.drawImage(backgroundImg, x, y, null);
+	}
 }

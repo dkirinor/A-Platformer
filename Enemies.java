@@ -34,6 +34,10 @@ public class Enemies {
 		this.y = y;
 	}
 	
+	public void setLayer(int layer) {
+		this.layer = layer;
+	}
+	
 	public void changeX(int speed) {
 		x += speed;		
 	}
