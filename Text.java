@@ -46,6 +46,10 @@ public class Text {
 		this.text = text;
 	}
 	
+	public String getText() {
+		return text;
+	}
+	
 	public void setPercent(double percent) {
 		this.percent = percent;
 	}

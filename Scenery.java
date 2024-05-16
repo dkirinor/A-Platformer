@@ -33,6 +33,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 	double moveChange;
 	
 	int scene;
+	int maxScene;
 	
 	Goal goal;
 	
@@ -66,7 +67,8 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 		
 		enemies.add(new Enemies(0, 975, 1000, 1000, 0));
 		
-		scene = 10; // -1
+		scene = -1; // -1 SCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENESCENE
+		maxScene = -1;
 		
 		goal = new Goal(960, 50, 40, 150, 2);
 		
@@ -299,7 +301,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			}
 		}
 		if (scene == 2) {
-			platforms.get(0).changeX((1000 - platforms.get(0).getX()) / 5);
+			platforms.get(0).changeX((575 - platforms.get(0).getX()) / 5);
 			platforms.get(5).changeY((675 - platforms.get(5).getY()) / 5);
 			platforms.get(8).changeY((750 - platforms.get(8).getY()) / 5);
 			platforms.get(9).changeY((600 - platforms.get(9).getY()) / 5);
@@ -314,6 +316,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			}
 		}
 		if (scene == 3) {
+			platforms.get(0).changeX((1000 - platforms.get(0).getX()) / 5);
 			platforms.get(5).changeY((525 - platforms.get(5).getY()) / 5);
 			platforms.get(6).changeY((375 - platforms.get(6).getY()) / 5);
 			platforms.get(7).changeY((300 - platforms.get(7).getY()) / 5);
@@ -429,7 +432,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			scene++;
 			
 			platforms.add(new Platforms(0, 900, 500, 100));
-			platforms.add(new Platforms(500, 900, 600, 100));
+			platforms.add(new Platforms(500, 900, 500, 100));
 			platforms.add(new Platforms(975, 200, 25, 800));
 			platforms.add(new Platforms(0, 0, 25, 1000));
 			platforms.add(new Platforms(0, 0, 1000, 25));
@@ -457,11 +460,11 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			}
 		}
 		if (scene == 12) {
-			// System.out.println(1);
+			System.out.println(platforms.get(6).getY());
 			platforms.get(6).changeY((775 - platforms.get(6).getY()) / 5);
 			platforms.get(7).changeY((825 - platforms.get(7).getY()) / 5);
 			
-			if (playerX + playerW < 600) {
+			if (playerX + playerW < 575) {
 				scene++;
 			}
 		}
@@ -469,51 +472,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			platforms.get(0).changeX((-75 - platforms.get(0).getX()) / 5);
 			platforms.get(1).changeX((575 - platforms.get(1).getX()) / 5);
 			
-			if (playerX + playerW < 550 || playerX + playerW >= 600) {
-				scene++;
-			}
-		}
-		if (scene == 14) {
-			if (playerX + playerW > 575) {
-				platforms.get(0).changeX((-75 - platforms.get(0).getX()) / 5);
-				platforms.get(1).changeX((725 - platforms.get(1).getX()) / 5);
-			}
-			
-			if (playerX + playerW < 525 && playerY <= 900) {
-				scene++;
-			}
-		}
-		if (scene == 15) {
-			platforms.get(0).changeX((-175 - platforms.get(0).getX()) / 5);
-			platforms.get(1).changeX((475 - platforms.get(1).getX()) / 5);
-			
 			if (playerX <= 125 && playerY + playerH <= 775) {
-				scene++;
-			}
-		}
-		if (scene == 16) {
-			platforms.get(0).changeX((-500 - platforms.get(0).getX()) / 5);
-			platforms.get(1).changeX((1000 - platforms.get(1).getX()) / 5);
-			platforms.get(7).changeY((700 - platforms.get(7).getY()) / 5);
-			
-			if (playerX >= 175 && playerY + playerH <= 700) {
-				scene++;
-				platforms.remove(0);
-				platforms.remove(0);
-				
-				text.setPercent(0);
-				text.setText("Hmm... I'm already running out of ideas.");
-				
-				eventWait = System.currentTimeMillis();
-				
-			}
-		}
-		if (scene == 17) {
-			text.changePercent((1 - text.getPercent()) / 5);
-			
-			platforms.get(4).changeY((1100 - platforms.get(4).getY()) / 5);
-			
-			if (System.currentTimeMillis() > eventWait + 2500) {
 				scene++;
 				
 				platforms.add(new Platforms(325, 1000, 75, 25));
@@ -525,71 +484,36 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 				enemies.add(new Enemies(400, -25, 75, 25, 1));
 				enemies.add(new Enemies(550, -25, 75, 25, 1));
 				enemies.add(new Enemies(700, -25, 75, 25, 1));
-				
-				platforms.remove(4);
-				
-				text.setPercent(0);
-				text.setText("Here, let me try something new...");
-				
-				eventWait = System.currentTimeMillis();
 			}
 		}
-		if (scene == 18) {
-			text.changePercent((1 - text.getPercent()) / 5);
-			
-			platforms.get(5).changeY((800 - platforms.get(5).getY()) / 5);
-			platforms.get(6).changeY((800 - platforms.get(6).getY()) / 5);
-			platforms.get(7).changeY((800 - platforms.get(7).getY()) / 5);
-			platforms.get(8).changeY((600 - platforms.get(8).getY()) / 5);
+		if (scene == 14) {
+			platforms.get(0).changeX((-500 - platforms.get(0).getX()) / 5);
+			platforms.get(1).changeX((1000 - platforms.get(1).getX()) / 5);
+			platforms.get(7).changeY((700 - platforms.get(7).getY()) / 5);
+			platforms.get(8).changeY((800 - platforms.get(8).getY()) / 5);
+			platforms.get(9).changeY((800 - platforms.get(9).getY()) / 5);
+			platforms.get(10).changeY((800 - platforms.get(10).getY()) / 5);
+			platforms.get(11).changeY((600 - platforms.get(11).getY()) / 5);
 			
 			enemies.get(1).changeY((200 - enemies.get(1).getY()) / 5);
 			enemies.get(2).changeY((200 - enemies.get(2).getY()) / 5);
 			enemies.get(3).changeY((200 - enemies.get(3).getY()) / 5);
 			enemies.get(4).changeY((200 - enemies.get(4).getY()) / 5);
 			
-			if (System.currentTimeMillis() > eventWait + 2500 || (playerX + playerW >= 325 && playerY + playerH >= 800)) {
+			if (playerX >= 175 && playerY + playerH <= 700) {
 				scene++;
-				
-				text.setPercent(0);
-				if (playerX + playerW >= 325) {
-					text.setText("Hey! Go back I'm not done yet.");
-					eventWait = System.currentTimeMillis();
-				} else {
-					text.setText("");
-					scene++;
-				}
+				platforms.remove(0);
+				platforms.remove(0);
 				
 				moveChange = 0;
+				
 			}
 		}
-		if (scene == 19) {
-			text.changePercent((1 - text.getPercent()) / 5);
-			
-			if (System.currentTimeMillis() > eventWait + 8000) {
-				text.setText("...");
-				
-				platforms.get(4).changeY((1100 - platforms.get(4).getY()) / 5);
-				platforms.get(5).changeY((1100 - platforms.get(5).getY()) / 5);
-				platforms.get(6).changeY((1100 - platforms.get(6).getY()) / 5);
-				platforms.get(7).changeY((1100 - platforms.get(7).getY()) / 5);
-				platforms.get(8).changeY((1100 - platforms.get(8).getY()) / 5);
-				
-				enemies.get(1).changeY((-100 - enemies.get(1).getY()) / 5);
-				enemies.get(2).changeY((-100 - enemies.get(2).getY()) / 5);
-				enemies.get(3).changeY((-100 - enemies.get(3).getY()) / 5);
-				enemies.get(4).changeY((-100 - enemies.get(4).getY()) / 5);
-			} else if (playerX < 250 && playerY + playerH <= 700) {
-				scene++;
-				
-				text.setPercent(0);
-				text.setText("");
-			}
-			
-		}
-		if (scene == 20) {
-			platforms.get(5).setY((int)(300 * Math.cos(moveChange) + 500));
-			platforms.get(6).setY((int)(300 * Math.cos(moveChange * 0.8) + 500));
-			platforms.get(7).setY((int)(300 * Math.cos(moveChange * 1.5) + 500));
+		if (scene == 15) {
+			platforms.get(4).changeY((1100 - platforms.get(4).getY()) / 5);
+			platforms.get(6).setY((int)(300 * Math.cos(moveChange) + 500));
+			platforms.get(7).setY((int)(300 * Math.cos(moveChange * 0.8) + 500));
+			platforms.get(8).setY((int)(300 * Math.cos(moveChange * 1.5) + 500));
 			
 			enemies.get(1).setY((int)(-300 * Math.cos(moveChange * 1.5) + 500));
 			enemies.get(2).setY((int)(-300 * Math.cos(moveChange * 2) + 500));
@@ -597,28 +521,30 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			enemies.get(4).setY((int)(-300 * Math.cos(moveChange * 2.5) + 500));
 			
 			moveChange += 0.02;
-			for (int j = 5; j <= 7; j++) {
+			for (int j = 6; j <= 8; j++) {
 				if (playerX + playerW >= platforms.get(j).getX() && 
 				playerX <= platforms.get(j).getX() + platforms.get(j).getW() &&
 				playerY + playerH >= platforms.get(j).getY() && 
 				playerY <= platforms.get(j).getY() + platforms.get(j).getH()) {
 					if (upArrowPressed) player.setY(platforms.get(j).getY() - playerH + 1);
-					else player.setY(platforms.get(j).getY() - playerH);
+					else {
+						yv = 0;
+						player.setY(platforms.get(j).getY() - playerH);
+					}
 				}
 			}
 			//platforms.get(7).changeW();
 			//if (
 			
 			if (playerX + playerW >= 800 && playerY + playerH >= 600) {
+				platforms.remove(4);
+				
 				scene++;
 				
 				eventWait = System.currentTimeMillis();
 			}
 		}
-		if (scene == 21) {
-			text.changePercent((1 - text.getPercent()) / 5);
-			
-			platforms.get(4).changeY((1100 - platforms.get(4).getY()) / 5);
+		if (scene == 16) {platforms.get(4).changeY((1100 - platforms.get(4).getY()) / 5);
 			platforms.get(5).changeY((1100 - platforms.get(5).getY()) / 5);
 			platforms.get(6).changeY((1100 - platforms.get(6).getY()) / 5);
 			platforms.get(7).changeY((1100 - platforms.get(7).getY()) / 5);
@@ -634,35 +560,138 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 				for (int i = 0; i < 4; i++) platforms.remove(4);
 				for (int i = 0; i < 4; i++) enemies.remove(1);
 				
-				platforms.add(new Platforms(-700, 900, 700, 100));
-				platforms.add(new Platforms(-700, 850, 150, 100));
-				platforms.add(new Platforms(-725, 875, 200, 50));
-				platforms.add(new Platforms(-400, 825, 150, 100));
-				platforms.add(new Platforms(-400, 875, 250, 50));
-				platforms.add(new Platforms(-700, 750, 50, 25));
-				platforms.add(new Platforms(-600, 700, 25, 25));
-				platforms.add(new Platforms(-575, 650, 25, 25));
+				platforms.add(new Platforms(-725 + 25, 900, 700, 100));
+				platforms.add(new Platforms(-725 + 700, -800, 25, 1800));
+				platforms.add(new Platforms(-725 + 25, 850, 150, 100));
+				platforms.add(new Platforms(-725 + 25, 875, 200, 50));
+				platforms.add(new Platforms(-725 + 400, 825, 150, 100));
+				platforms.add(new Platforms(-725 + 400, 875, 250, 50));
+				platforms.add(new Platforms(-725 + 25, 750, 75, 25));
+				platforms.add(new Platforms(-725 + 150, 700, 50, 25));
+				platforms.add(new Platforms(-725 + 275, 650, 25, 25));
+				platforms.add(new Platforms(-725 + 300, 675, 25, 25));
+				platforms.add(new Platforms(-725 + 375, 625, 50, 25));
+				platforms.add(new Platforms(-725 + 475, 600, 25, 25));
+				platforms.add(new Platforms(-725 + 525, 575, 25, 25));
+				platforms.add(new Platforms(-725 + 275, 500, 25, 25));
+				platforms.add(new Platforms(-725 + 300, 525, 25, 25));
+				platforms.add(new Platforms(-725 + 25, 525, 75, 25));
+				platforms.add(new Platforms(-725 + 125, 475, 25, 25));
+				platforms.add(new Platforms(-725 + 25, 400, 50, 25));
+				platforms.add(new Platforms(-725 + 100, 375, 25, 25));
+				platforms.add(new Platforms(-725 + 125, 275, 25, 25));
+				platforms.add(new Platforms(-725 + 200, 250, 100, 25));
+				platforms.add(new Platforms(-725 + 275, 225, 100, 25));
+				platforms.add(new Platforms(-725 + 450, 200, 20, 200));
+				platforms.add(new Platforms(-725 + 475, 150, 20, 200));
+				platforms.add(new Platforms(-725 + 550, -100, 20, 400));
+				platforms.add(new Platforms(-725 + 550, 450, 20, 200));
+				platforms.add(new Platforms(-725 + 600, 375, 20, 200));
+				platforms.add(new Platforms(-725 + 675, 400, 20, 200));
+				platforms.add(new Platforms(-725 + 575, 350, 20, 20));
+				platforms.add(new Platforms(-725 + 675, 275, 20, 20));
+				platforms.add(new Platforms(-725 + 575, 200, 20, 20));
+				platforms.add(new Platforms(-725 + 625, 125, 20, 20));
+				platforms.add(new Platforms(-725 + 675, 50, 20, 20));
+				platforms.add(new Platforms(-725 + 575, -50, 20, 20));
+				platforms.add(new Platforms(-725 + 275, 0, 100, 25));
 				
 				enemies.add(new Enemies(0, 1100, 1000, 1000, 1));
+				
+				eventWait = System.currentTimeMillis();
+				
+				text.setPercent(0);
+				if (maxScene >= scene) {
+					text.setText("Ungh...");
+					scene += 3;
+				}
+				else text.setText("Uhh...");
 			}
 		}
-		if (scene == 22) {
-			platforms.get(4).changeY((800 - platforms.get(4).getY()) / 5);
-			platforms.get(5).changeX((25 - platforms.get(5).getX()) / 5);
-			platforms.get(6).changeX((25 - platforms.get(6).getX()) / 5);
-			platforms.get(7).changeX((25 - platforms.get(7).getX()) / 5);
-			platforms.get(8).changeX((400 - platforms.get(8).getX()) / 5);
-			platforms.get(9).changeX((400 - platforms.get(9).getX()) / 5);
-			platforms.get(10).changeX((25 - platforms.get(10).getX()) / 5);
-			platforms.get(11).changeX((125 - platforms.get(11).getX()) / 5);
-			platforms.get(12).changeX((200 - platforms.get(12).getX()) / 5);
+		if (scene == 17) {
+			text.changePercent((1 - text.getPercent()) / 5);
 			
+			platforms.get(4).changeY((800 - platforms.get(4).getY()) / 10);
+			
+			if (System.currentTimeMillis() > eventWait + 2000) {
+				scene++;
+				
+				eventWait = System.currentTimeMillis();
+				
+				text.setPercent(0);
+				text.setText("I'm running out of ideas.");
+			}
+		}
+		if (scene == 18) {
+			text.changePercent((1 - text.getPercent()) / 5);
+			
+			if (System.currentTimeMillis() > eventWait + 2500) {
+				scene++;
+				
+				eventWait = System.currentTimeMillis();
+				
+				text.setPercent(0);
+				text.setText("Here, let me get this thing from the storage room...");
+			}
+		}
+		if (scene == 19) {
+			text.changePercent((1 - text.getPercent()) / 5);
+			
+			if (System.currentTimeMillis() > eventWait + 3500) {
+				scene++;
+				
+				eventWait = System.currentTimeMillis();
+				
+				text.setPercent(0);
+				text.setText("Ungh...");
+			}
+		}
+		if (scene == 20) {
+			text.changePercent((1 - text.getPercent()) / 5);
+			if (Math.random() * 100 < ((maxScene >= scene) ? 25 : 10)) {
+				text.setText(text.getText() + "..");
+				for (int i = 5; i < platforms.size(); i++) {
+					platforms.get(i).changeX(25);
+				}
+			}
 			enemies.get(1).changeY((975 - enemies.get(1).getY()) / 5);
-		
-			if (playerX <= 700) {
+			
+			if (maxScene >= scene) platforms.get(4).changeY((800 - platforms.get(4).getY()) / 10);
+			
+			if (platforms.get(5).getX() >= 25) {
 				scene++;
 				
 				enemies.remove(0);
+				
+				text.setPercent(0);
+				if (maxScene >= scene) {
+					text.setText("");
+					scene++;
+				} else text.setText("Heh... Sorry, it is a lot of game objects I'm moving at once.");
+				
+				eventWait = System.currentTimeMillis();
+			}
+		}
+		if (scene == 21) {
+			text.changePercent((1 - text.getPercent()) / 5);
+			
+			if (System.currentTimeMillis() > eventWait + 3500) {
+				scene++;
+				
+				text.setPercent(0);
+				text.setText("Anyways, good luck.");
+			}
+		}
+		if (scene == 22) {
+			platforms.get(6).changeY((-1000 - platforms.get(6).getY()) / 5);
+			
+			text.changePercent((1 - text.getPercent()) / 5);
+			
+			if (playerX < 725) {
+				scene++;
+				
+				text.setPercent(0);
+				text.setText("");
 				
 				moveChange = 0;
 			}
@@ -671,7 +700,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			platforms.get(4).changeY((200 - platforms.get(4).getY()) / 5);
 			
 			moveChange++;
-			if (moveChange % 5 == 0) {
+			if (moveChange % ((25 / ((int)(moveChange / 100) + 1)) + 1) == 0) {
 				for (int i = 5; i < platforms.size(); i++) {
 					platforms.get(i).changeY(1);
 				}
@@ -692,6 +721,8 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 		if (!died) {
 			died = true;
 			physicsOn = false;
+			if (maxScene < scene) maxScene = scene;
+			System.out.println(maxScene);
 			if (Math.random() * 100 < 20) {
 				// System.out.println(taunts[(int)(Math.random() * 5)]);
 				text.setPercent(1);
