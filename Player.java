@@ -9,6 +9,8 @@ public class Player {
 	private int h;
 	
 	private int opacity;
+	
+	private Platforms parent;
 
 	public Player(int x, int y, int w, int h) {
 		this.x = x;
@@ -16,6 +18,7 @@ public class Player {
 		this.w = w;
 		this.h = h;
 		
+		this.parent = null;
 		opacity = 255;
 	}
 
@@ -67,5 +70,18 @@ public class Player {
 	
 	public int getOpacity() {
 		return opacity;
+	}
+	
+	public void setParent(Platforms platform) {
+		this.parent = platform;
+	}
+	
+	public Platforms getParent() {
+		return parent;
+	}
+	
+	public void resetParent() {
+		if (parent != null) parent.resetChild();
+		parent = null;
 	}
 } 

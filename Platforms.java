@@ -6,12 +6,14 @@ public class Platforms {
 	private int y;
 	private int w;
 	private int h;
+	private Player child;
 
 	public Platforms(int x, int y, int w, int h) {
 		this.x = x;
 		this.y = y;
 		this.w = w;
 		this.h = h;
+		this.child = null;
 	}
 
 	public void draw(Graphics g) {
@@ -30,6 +32,7 @@ public class Platforms {
 	
 	public void changeX(int speed) {
 		x += speed;		
+		if (child != null) child.changeX(speed);
 	}
 
 	public void changeY(int speed) {
@@ -58,5 +61,17 @@ public class Platforms {
 
 	public int getH() {
 		return h;
+	}
+	
+	public void setChild(Player player) {
+		this.child = player;
+	}
+	
+	public Player getChild() {
+		return child;
+	}
+	
+	public void resetChild() {
+		child = null;
 	}
 } 
