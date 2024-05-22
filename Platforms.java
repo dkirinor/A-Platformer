@@ -7,6 +7,8 @@ public class Platforms {
 	private int w;
 	private int h;
 	private Player child;
+	
+	Color black;
 
 	public Platforms(int x, int y, int w, int h) {
 		this.x = x;
@@ -14,10 +16,11 @@ public class Platforms {
 		this.w = w;
 		this.h = h;
 		this.child = null;
+		
+		black = new Color(0, 0, 0);	
 	}
 
 	public void draw(Graphics g) {
-		Color black = new Color(0, 0, 0);	
 		g.setColor(black);
 		g.fillRect(x, y, w, h);
 	}

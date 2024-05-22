@@ -185,9 +185,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			playerX <= platforms.get(i).getX() + platforms.get(i).getW() &&
 			playerY + playerH >= platforms.get(i).getY() && 
 			playerY <= platforms.get(i).getY() + platforms.get(i).getH();
-			// System.out.print(touchingGround + " ");
 		}
-		// System.out.println();
 		return touchingGround;
 	}
 	
@@ -291,7 +289,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 		
 			enemies.add(new Enemies(0, 975, 1000, 1000, 0));
 			
-			text.setText("Use A and D to move left and right, and use W to jump.");
+			text.setText("Use A and D to move, and use W to jump. (Arrow keys work too)");
 			
 			physicsOn = true;
 		}
@@ -315,7 +313,6 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			platforms.get(7).changeY((775 - platforms.get(7).getY()) / 5);
 			
 			text.changePercent((1 - text.getPercent()) / 5);
-			// System.out.println(text.getPercent());
 			
 			if (playerX + playerW >= 800 && playerY <= platforms.get(7).getY()) {
 				scene++;
@@ -353,7 +350,6 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			if (playerX + playerW >= 775 && playerY + playerH <= 310) {
 				scene++;
 			}
-			// System.out.println(playerX + playerW + " " + (playerY + playerH));
 		}
 		if (scene == 4) {
 			platforms.get(0).changeX((0 - platforms.get(0).getX()) / 5);
@@ -491,7 +487,6 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 		if (scene == 12) {
 			text.changePercent((0 - text.getPercent()) / 5);
 			
-			System.out.println(platforms.get(6).getY());
 			platforms.get(6).changeY((775 - platforms.get(6).getY()) / 5);
 			platforms.get(7).changeY((825 - platforms.get(7).getY()) / 5);
 			
@@ -551,7 +546,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			}
 		}
 		if (scene == 16) {
-			platforms.get(4).changeY((1100 - platforms.get(4).getY()) / 5);
+			platforms.get(4).changeY((1100 - platforms.get(4).getY()) / 10);
 			platforms.get(6).setY((int)(300 * Math.cos(moveChange) + 500));
 			platforms.get(7).setY((int)(300 * Math.cos(moveChange * 0.8) + 500));
 			platforms.get(8).setY((int)(300 * Math.cos(moveChange * 1.5) + 500));
@@ -607,8 +602,8 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			
 			physicsOn = true;
 			
-			respawnX = 800;
-			respawnY = 750;
+			respawnX = 825;
+			respawnY = 650;
 			
 			platforms.add(new Platforms(975, 200, 25, 800)); // 0
 			platforms.add(new Platforms(0, 0, 25, 1000));
@@ -653,14 +648,14 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			platforms.add(new Platforms(350, 25, 100, 25)); // 40
 			platforms.add(new Platforms(200, -75, 100, 25));
 			platforms.add(new Platforms(25, -150, 150, 25));
-			platforms.add(new Platforms(25, -250, 75, 25)); // 43 Moving Stuff Start
-			platforms.add(new Platforms(25, -325, 75, 25));
-			platforms.add(new Platforms(25, -400, 75, 25));
-			platforms.add(new Platforms(25, -475, 75, 25));
-			platforms.add(new Platforms(25, -550, 75, 25));
-			platforms.add(new Platforms(25, -625, 75, 25)); // 48 Moving Stuff End
+			platforms.add(new Platforms(25, -250, 70, 20)); // 43 Moving Stuff Start
+			platforms.add(new Platforms(25, -325, 70, 20));
+			platforms.add(new Platforms(25, -400, 70, 20));
+			platforms.add(new Platforms(25, -475, 70, 20));
+			platforms.add(new Platforms(25, -550, 70, 20));
+			platforms.add(new Platforms(25, -625, 70, 20)); // 48 Moving Stuff End
 			platforms.add(new Platforms(25, -250, 25, 25));
-			platforms.add(new Platforms(25, -325, 25, 25));
+			platforms.add(new Platforms(25, -325, 25, 25)); // 50
 			platforms.add(new Platforms(25, -400, 25, 25));
 			platforms.add(new Platforms(25, -475, 25, 25));
 			platforms.add(new Platforms(25, -550, 25, 25));
@@ -670,8 +665,104 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			platforms.add(new Platforms(675, -400, 25, 25));
 			platforms.add(new Platforms(675, -475, 25, 25));
 			platforms.add(new Platforms(675, -550, 25, 25));
-			platforms.add(new Platforms(675, -625, 25, 25));
-			platforms.add(new Platforms(325, -700, 75, 25));
+			platforms.add(new Platforms(675, -625, 25, 25)); // 60
+			platforms.add(new Platforms(325, -700, 70, 20));
+			platforms.add(new Platforms(275, -775, 20, 20)); // 62 Reapeating Stuff Start
+			platforms.add(new Platforms(200, -850, 20, 20));
+			platforms.add(new Platforms(300, -950, 20, 20));
+			platforms.add(new Platforms(100, -925, 20, 20));
+			platforms.add(new Platforms(450, -850, 20, 20));
+			platforms.add(new Platforms(500, -950, 20, 20));
+			platforms.add(new Platforms(550, -825, 20, 20));
+			platforms.add(new Platforms(525, -875, 20, 20));
+			platforms.add(new Platforms(425, -925, 20, 20)); // 70
+			platforms.add(new Platforms(325, -950, 20, 20));
+			platforms.add(new Platforms(625, -900, 20, 20));
+			platforms.add(new Platforms(525, -850, 20, 20));
+			platforms.add(new Platforms(25, -1075, 20, 20));
+			platforms.add(new Platforms(75, -1050, 20, 20));
+			platforms.add(new Platforms(150, -1150, 20, 20));
+			platforms.add(new Platforms(225, -1225, 20, 20));
+			platforms.add(new Platforms(300, -1050, 20, 20));
+			platforms.add(new Platforms(375, -1150, 20, 20)); // 80
+			platforms.add(new Platforms(450, -1025, 20, 20));
+			platforms.add(new Platforms(525, -1075, 20, 20));
+			platforms.add(new Platforms(600, -1125, 20, 20));
+			platforms.add(new Platforms(650, -1150, 20, 20));
+			platforms.add(new Platforms(450, -1100, 20, 20));
+			platforms.add(new Platforms(550, -1050, 20, 20));
+			platforms.add(new Platforms(100, -1075, 20, 20));
+			platforms.add(new Platforms(150, -1150, 20, 20));
+			platforms.add(new Platforms(200, -1250, 20, 20));
+			platforms.add(new Platforms(250, -1225, 20, 20)); // 90
+			platforms.add(new Platforms(300, -1050, 20, 20));
+			platforms.add(new Platforms(350, -1250, 20, 20));
+			platforms.add(new Platforms(400, -1125, 20, 20));
+			platforms.add(new Platforms(450, -1275, 20, 20));
+			platforms.add(new Platforms(500, -1125, 20, 20));
+			platforms.add(new Platforms(550, -1250, 20, 20));
+			platforms.add(new Platforms(600, -1000, 20, 20));
+			platforms.add(new Platforms(650, -1150, 20, 20));
+			platforms.add(new Platforms(75, -1175, 20, 20));
+			platforms.add(new Platforms(125, -1150, 20, 20)); // 100
+			platforms.add(new Platforms(175, -1050, 20, 20));
+			platforms.add(new Platforms(225, -1325, 20, 20));
+			platforms.add(new Platforms(275, -1450, 20, 20));
+			platforms.add(new Platforms(325, -1350, 20, 20));
+			platforms.add(new Platforms(375, -1425, 20, 20));
+			platforms.add(new Platforms(425, -1475, 20, 20));
+			platforms.add(new Platforms(475, -1325, 20, 20));
+			platforms.add(new Platforms(525, -1250, 20, 20));
+			platforms.add(new Platforms(575, -1000, 20, 20));
+			platforms.add(new Platforms(625, -1150, 20, 20)); // 110
+			platforms.add(new Platforms(275, -1405, 20, 20));
+			platforms.add(new Platforms(200, -1550, 20, 20));
+			platforms.add(new Platforms(300, -1650, 20, 20));
+			platforms.add(new Platforms(100, -1625, 20, 20));
+			platforms.add(new Platforms(450, -1550, 20, 20));
+			platforms.add(new Platforms(500, -1750, 20, 20));
+			platforms.add(new Platforms(550, -1625, 20, 20));
+			platforms.add(new Platforms(525, -1675, 20, 20));
+			platforms.add(new Platforms(425, -1525, 20, 20));
+			platforms.add(new Platforms(325, -1550, 20, 20)); // 120
+			platforms.add(new Platforms(625, -1600, 20, 20));
+			platforms.add(new Platforms(525, -1550, 20, 20));
+			platforms.add(new Platforms(25, -1575, 20, 20));
+			platforms.add(new Platforms(75, -1550, 20, 20));
+			platforms.add(new Platforms(150, -1650, 20, 20));
+			platforms.add(new Platforms(225, -1825, 20, 20));
+			platforms.add(new Platforms(300, -1750, 20, 20));
+			platforms.add(new Platforms(375, -1650, 20, 20));
+			platforms.add(new Platforms(450, -1725, 20, 20)); // 130
+			platforms.add(new Platforms(525, -1575, 20, 20));
+			platforms.add(new Platforms(600, -1725, 20, 20));
+			platforms.add(new Platforms(650, -1650, 20, 20));
+			platforms.add(new Platforms(450, -16600, 20, 20));
+			platforms.add(new Platforms(550, -1550, 20, 20));
+			platforms.add(new Platforms(100, -1575, 20, 20));
+			platforms.add(new Platforms(150, -1650, 20, 20));
+			platforms.add(new Platforms(200, -1550, 20, 20));
+			platforms.add(new Platforms(250, -1425, 20, 20));
+			platforms.add(new Platforms(300, -1550, 20, 20)); // 140
+			platforms.add(new Platforms(350, -1650, 20, 20));
+			platforms.add(new Platforms(400, -1725, 20, 20));
+			platforms.add(new Platforms(450, -1875, 20, 20));
+			platforms.add(new Platforms(500, -1725, 20, 20));
+			platforms.add(new Platforms(550, -1850, 20, 20));
+			platforms.add(new Platforms(600, -1700, 20, 20));
+			platforms.add(new Platforms(650, -1750, 20, 20));
+			platforms.add(new Platforms(75, -1875, 20, 20));
+			platforms.add(new Platforms(125, -1850, 20, 20));
+			platforms.add(new Platforms(175, -1750, 20, 20)); // 150
+			platforms.add(new Platforms(225, -1925, 20, 20));
+			platforms.add(new Platforms(275, -2050, 20, 20));
+			platforms.add(new Platforms(325, -2050, 20, 20));
+			platforms.add(new Platforms(375, -2225, 20, 20));
+			platforms.add(new Platforms(425, -2175, 20, 20));
+			platforms.add(new Platforms(475, -1925, 20, 20));
+			platforms.add(new Platforms(525, -1850, 20, 20));
+			platforms.add(new Platforms(575, -2000, 20, 20));
+			platforms.add(new Platforms(625, -2150, 20, 20)); // 159 Reapeting Stuff End
 			
 			enemies.add(new Enemies(0, 975, 1000, 1000, 1));
 			
@@ -758,7 +849,6 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 		}
 		if (scene == 24) {
 			platforms.get(6).changeY((-1000 - platforms.get(6).getY()) / 5);
-
 			
 			text.changePercent((1 - text.getPercent()) / 5);
 			
@@ -772,22 +862,27 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			}
 		}
 		if (scene == 25) {
-			platforms.get(4).changeY((200 - platforms.get(4).getY()) / 5);
+			platforms.get(4).changeY((250 - platforms.get(4).getY()) / 5);
 			
 			moveChange++;
 			if (moveChange % ((25 / ((int)(moveChange / 100) + 1)) + 1) == 0) {
 				for (int i = 5; i < platforms.size(); i++) {
 					platforms.get(i).changeY(1);
+					
+					if (i >= 62 && i <= 159 && platforms.get(i).getY() >= 1000) {
+						platforms.get(i).changeY(-1100);
+					}
 				}
 			}
 			
-			platforms.get(43).changeX((int)(275 * Math.cos(moveChange / 100)) + 325 - platforms.get(43).getX());
-			platforms.get(44).changeX((int)(275 * Math.cos(moveChange / 75 + 1)) + 325 - platforms.get(44).getX());
-			platforms.get(45).changeX((int)(275 * Math.cos(moveChange / 100 + 2)) + 325 - platforms.get(45).getX());
-			platforms.get(46).changeX((int)(275 * Math.cos(moveChange / 75 + 3)) + 325 - platforms.get(46).getX());
-			platforms.get(47).changeX((int)(275 * Math.cos(moveChange / 50 + 4)) + 325 - platforms.get(47).getX());
-			platforms.get(48).changeX((int)(275 * Math.cos(moveChange / 25 + 5)) + 325 - platforms.get(48).getX());
+			platforms.get(43).changeX((int)(265 * Math.cos(moveChange / 100)) + 325 - platforms.get(43).getX());
+			platforms.get(44).changeX((int)(265 * Math.cos(moveChange / 75 + 1)) + 325 - platforms.get(44).getX());
+			platforms.get(45).changeX((int)(265 * Math.cos(moveChange / 100 + 2)) + 325 - platforms.get(45).getX());
+			platforms.get(46).changeX((int)(265 * Math.cos(moveChange / 75 + 3)) + 325 - platforms.get(46).getX());
+			platforms.get(47).changeX((int)(265 * Math.cos(moveChange / 50 + 4)) + 325 - platforms.get(47).getX());
+			platforms.get(48).changeX((int)(265 * Math.cos(moveChange / 25 + 5)) + 325 - platforms.get(48).getX());
 			
+			boolean touchingSomething = false;
 			for (int i = 43; i <= 48; i++) {
 				if (playerX + playerW >= platforms.get(i).getX() && 
 				playerX <= platforms.get(i).getX() + platforms.get(i).getW() &&
@@ -797,12 +892,11 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 					platforms.get(i).setChild(player);
 					player.setParent(platforms.get(i));
 					//player.setX(platforms.get(i).getX() + xOffset);
+					touchingSomething = true;
 				}
 			}
+			if (!touchingSomething) player.resetParent();
 		}
-		// System.out.println(deaths);
-		
-		// System.out.println(platforms.size());
 		
 		// -------------------------------------------------------------------------------------------------------------------------------
 	}
@@ -812,9 +906,7 @@ public class Scenery extends JPanel implements MouseListener, MouseMotionListene
 			died = true;
 			physicsOn = false;
 			if (maxScene < scene) maxScene = scene;
-			System.out.println(maxScene);
 			if (Math.random() * 100 < 20) {
-				// System.out.println(taunts[(int)(Math.random() * 5)]);
 				text.setPercent(1);
 				text.setSize(15);
 				text.setText(taunts[(int)(Math.random() * 5)]);

@@ -14,5 +14,3 @@ public class Runner {
 		sc.animate();
 	}
 }
-
-// Version 0.0.01

@@ -11,6 +11,8 @@ public class Player {
 	private int opacity;
 	
 	private Platforms parent;
+	
+	Color black;
 
 	public Player(int x, int y, int w, int h) {
 		this.x = x;
@@ -23,7 +25,7 @@ public class Player {
 	}
 
 	public void draw(Graphics g) {
-		Color black = new Color(50, 50, 50, opacity);
+		black = new Color(50, 50, 50, opacity);
 		g.setColor(black);
 		g.fillRect(x, y, w, h);
 	}

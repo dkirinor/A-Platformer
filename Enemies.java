@@ -7,6 +7,10 @@ public class Enemies {
 	private int w;
 	private int h;
 	private int layer;
+	
+	Color red = new Color(255, 0, 0);
+	Color redGlow = new Color(255, 0, 0, 50);
+	Color redGlow2 = new Color(255, 0, 0, 100);
 
 	public Enemies(int x, int y, int w, int h, int layer) {
 		this.x = x;
@@ -17,12 +21,11 @@ public class Enemies {
 	}
 
 	public void draw(Graphics g) {
-		Color red = new Color(255, 0, 0);
-		Color redGlow = new Color(255, 0, 0, 50);
 		g.setColor(red);
 		g.fillRect(x, y, w, h);
-		g.setColor(redGlow);
+		g.setColor(redGlow2);
 		g.fillRect(x - 4, y - 4, w + 8, h + 8);
+		g.setColor(redGlow);
 		g.fillRect(x - 8, y - 8, w + 16, h + 16);
 	}
 	

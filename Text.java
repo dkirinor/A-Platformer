@@ -11,6 +11,9 @@ public class Text {
 	private int size;
 	private double percent;
 	private String text;
+	
+	Font font;
+	Color gray;
 
 	public Text(int x, int y, int size) {
 		this.x = x;
@@ -19,12 +22,13 @@ public class Text {
 		text = new String("");
 		
 		percent = 0;
+		
+		gray = new Color(80, 80, 120);	
 	}
 
 	public void draw(Graphics g) {
-		Font font = new Font("Arial", Font.PLAIN, size);
+		font = new Font("Arial", Font.PLAIN, size);
 		g.setFont(font);
-		Color gray = new Color(80, 80, 120);	
 		g.setColor(gray);
 		int length = (int)(Math.clamp(text.length() * percent * 1.1, 0, text.length()));
 		g.drawString(text.substring(0, length), x, y);
